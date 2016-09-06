@@ -8,11 +8,8 @@
 #
 # Description:
 # Starting with Python, Chapter 1, Exercise 3
+# Converting decimal numbers to binary
 #
-# Notes:
-# Will complete once I get to my Python book
-print("Hello world")
-Name = "Jessica"
-Age = 22
-print("Name:", Name, "Age:", Age)
+# 11 in binary is 00001011
+# 65 in binary is
 
