@@ -11,3 +11,8 @@
 #
 # Notes:
 # Will complete once I get to my Python book
+print("Hello world")
+Name = "Jessica"
+Age = 22
+print("Name:", Name, "Age:", Age)
+
