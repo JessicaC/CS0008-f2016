@@ -8,4 +8,6 @@
 #
 # Description:
 # Starting with Python, Chapter 1, Exercise 3
-
+#
+# Notes:
+# Will complete once I get to my Python book
