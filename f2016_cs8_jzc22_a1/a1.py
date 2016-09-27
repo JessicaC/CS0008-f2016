@@ -11,8 +11,6 @@
 #
 # Prompts the user which system he/she wants to use
 #
-# Notes to TA/professor:
-# I hope I won't lose points for my folder name not matching the instructions exactly?
 #
 sys = input("Which system do you want to use, USC or Metric?")
 # Ask user for distance driven and how much gasoline was used; the units depend on the system selected by user
