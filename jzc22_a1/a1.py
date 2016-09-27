@@ -20,3 +20,14 @@ if sys == 'USC':
 elif sys == 'Metric':
     print(distance + "km")
 # Convert the quantities
+if sys == 'USC':
+    newdis = distance * 1.60934
+    newgas = gasoline * 3.78541
+    print(newdis + 'km')
+    print(newgas + 'liters')
+elif sys == 'Metric':
+    newdis = distance / 0.621371
+    newgas = gasoline / 0.264172
+    print(newdis + 'miles')
+    print(newgas + 'gallons')
+# Compute the fuel consumption
