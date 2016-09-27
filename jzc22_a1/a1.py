@@ -9,11 +9,14 @@
 # Description:
 # Assignment 1
 #
-#
+# Prompts the user which system he/she wants to use
 sys = input("Which system do you want to use, USC or Metric?")
+# Ask user for distance driven and how much gasoline was used; the units depend on the system selected by user
 distance = input("Distance driven: ")
 gasoline = input("Gasoline used: ")
-if sys = "USC"
-print(distance + "miles")
-elif sys = "Metric"
-print(distance + "km")
+# Print the amounts
+if sys == 'USC':
+    print(distance + "miles")
+elif sys == 'Metric':
+    print(distance + "km")
+# Convert the quantities
