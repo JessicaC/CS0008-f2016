@@ -10,3 +10,10 @@
 # Assignment 1
 #
 #
+sys = input("Which system do you want to use, USC or Metric?")
+distance = input("Distance driven: ")
+gasoline = input("Gasoline used: ")
+if sys = "USC"
+print(distance + "miles")
+elif sys = "Metric"
+print(distance + "km")
