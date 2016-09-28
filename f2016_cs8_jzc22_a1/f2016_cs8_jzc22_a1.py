@@ -29,12 +29,24 @@ elif sys == 'Metric':
 if sys == 'USC':
     newdis = distance * 1.60934
     newgas = gasoline * 3.78541
+    print(format(newdis, ',.3f'), \
+          ' km', sep='')
+    print(format(newgas, ',.3f'), \
+          ' liters', sep='')
 elif sys == 'Metric':
     newdis = distance / 0.621371
     newgas = gasoline / 0.264172
+    print(format(newdis, ',.3f'), \
+      ' miles', sep='')
+    print(format(newgas, ',.3f'), \
+      ' gallons', sep='')
 # Compute the fuel consumption
 c_mpg = distance / gasoline
 cm = (distance * 100) / gasoline
+print(format(c_mpg, ',.3f'), \
+     ' mpg', sep='')
+print(format(cm, ',.3f'), \
+     ' 1/100km', sep='')
 # Consumption rating
 cm1 = 20
 cm2 = 15
@@ -51,16 +63,7 @@ elif cm >= cm4:
 elif cm <= cm4:
     rating = 'Excellent'
 
-print(format(newdis, ',.3f'), \
-      ' km', sep='')
-print(format(newgas, ',.3f'), \
-      ' liters', sep='')
-print(format(newdis, ',.3f'), \
-      ' miles', sep='')
-print(format(newgas, ',.3f'), \
-      ' gallons', sep='')
-print(format(c1, ',.3f'), \
-     ' mpg', sep='')
-print(format(c2, ',.3f'), \
-     ' 1/100km', sep='')
+print('\t\t\t\tUSC\t\tMetric')
+
+
 print('Gas consumption rating: ' + rating, sep='')
