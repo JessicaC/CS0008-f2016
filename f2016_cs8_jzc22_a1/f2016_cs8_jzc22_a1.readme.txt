@@ -1,42 +1,4 @@
-# Prompts the user which system he/she wants to use
-sys = input("Which system do you want to use, USC or Metric? ")
-# Ask user for distance driven and how much gasoline was used; the units depend on the system selected by user
-distance = float(input("Distance driven: "))
-gasoline = float(input("Gasoline used: "))
-if sys == 'USC':
-    newdis_m = distance * 1.60934
-    newgas_m = gasoline * 3.78541
-    print(format(distance, ',.3f'),' miles', sep='')
-    print(format(gasoline, ',.3f'),' gallons', sep='')
-    print(format(newdis_m, ',.3f'),' km', sep='')
-    print(format(newgas_m, ',.3f'),' liters', sep='')
-    c_mpg = distance / gasoline
-    print(format(c_mpg, ',.3f'), ' mpg', sep='')
-elif sys == 'Metric':
-    newdis_u = distance / 0.621371
-    newgas_u = gasoline / 0.264172
-    print(format(newdis_u, ',.3f'),' miles', sep='')
-    print(format(newgas_u, ',.3f'),' gallons', sep='')
-    print(format(distance, ',.3f'),' km', sep='')
-    print(format(gasoline, ',.3f'),' liters', sep='')
-    cm = 100 * gasoline / distance
-    print(format(cm, ',.3f'),' 1/100km', sep='')
-# Consumption rating
-cm = 100 * gasoline / distance
-cm1 = 20
-cm2 = 15
-cm3 = 10
-cm4 = 8
-if cm > cm1:
-    rating = 'Extremely Poor'
-elif cm >= cm2:
-    rating = 'Poor'
-elif cm >= cm3:
-    rating = 'Average'
-elif cm >= cm4:
-    rating = 'Good'
-elif cm <= cm4:
-    rating = 'Excellent'
+
 
 print('\t\t\t\tUSC\t\tMetric')
 print('Distance\t\t: ')
@@ -64,8 +26,10 @@ elif sys == 'Metric':
     gasoline_units = 'liters'
     print(format(distance, '6.3f') + distance_units)
     print(format(gasoline, '6.3f') + gasoline_units)
+mpg = miles / gallons
+print(format(mpg, ',.3f') + ' mpg')
 # Consumption rating
-cm = 100 * gasoline / distance
+cm = 100 * liters / km
 cm1 = 20
 cm2 = 15
 cm3 = 10
@@ -80,6 +44,8 @@ elif cm >= cm4:
     rating = 'Good'
 elif cm <= cm4:
     rating = 'Excellent'
+print (format(cm, '.3f') + ' 1/100km')
+print('Gas consumption rating: ' + rating)
 
 print('\t\t\t\t\t\tUSC\t\tMetric')
 print('Distance\t\t: ')
