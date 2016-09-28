@@ -10,44 +10,22 @@
 # Assignment 1
 #
 # Prompts the user which system he/she wants to use
-sys = input("Which system do you want to use, USC or Metric?")
+sys = input("Which system do you want to use, USC or Metric? ")
 # Ask user for distance driven and how much gasoline was used; the units depend on the system selected by user
 distance = float(input("Distance driven: "))
 gasoline = float(input("Gasoline used: "))
-# Print the amounts
 if sys == 'USC':
-    print(format(distance, ',.3f'), \
-          ' miles', sep='')
-    print(format(gasoline, ',.3f'), \
-          ' gallons', sep='')
+    distance_units = 'miles'
+    gasoline_units = 'gallons'
+    print(format(distance, '6.3f') + distance_units)
+    print(format(gasoline, '6.3f') + gasoline_units)
 elif sys == 'Metric':
-    print(format(distance, ',.3f'), \
-          ' km', sep='')
-    print(format(gasoline, ',.3f'), \
-          ' liters', sep='')
-# Convert the quantities
-if sys == 'USC':
-    newdis = distance * 1.60934
-    newgas = gasoline * 3.78541
-    print(format(newdis, ',.3f'), \
-          ' km', sep='')
-    print(format(newgas, ',.3f'), \
-          ' liters', sep='')
-elif sys == 'Metric':
-    newdis = distance / 0.621371
-    newgas = gasoline / 0.264172
-    print(format(newdis, ',.3f'), \
-      ' miles', sep='')
-    print(format(newgas, ',.3f'), \
-      ' gallons', sep='')
-# Compute the fuel consumption
-c_mpg = distance / gasoline
-cm = (distance * 100) / gasoline
-print(format(c_mpg, ',.3f'), \
-     ' mpg', sep='')
-print(format(cm, ',.3f'), \
-     ' 1/100km', sep='')
+    distance_units = 'km'
+    gasoline_units = 'liters'
+    print(format(distance, '6.3f') + distance_units)
+    print(format(gasoline, '6.3f') + gasoline_units)
 # Consumption rating
+cm = 100 * gasoline / distance
 cm1 = 20
 cm2 = 15
 cm3 = 10
@@ -63,7 +41,8 @@ elif cm >= cm4:
 elif cm <= cm4:
     rating = 'Excellent'
 
-print('\t\t\t\tUSC\t\tMetric')
-
-
+print('\t\t\t\t\t\tUSC\t\tMetric')
+print('Distance\t\t: ')
+print('Gas\t\t\t\t: ')
+print('Consumption\t\t: ')
 print('Gas consumption rating: ' + rating, sep='')
