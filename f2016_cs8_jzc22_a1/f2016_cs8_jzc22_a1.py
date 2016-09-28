@@ -10,26 +10,57 @@
 # Assignment 1
 #
 # Prompts the user which system he/she wants to use
-#
-#
 sys = input("Which system do you want to use, USC or Metric?")
 # Ask user for distance driven and how much gasoline was used; the units depend on the system selected by user
-distance = input("Distance driven: ")
-gasoline = input("Gasoline used: ")
+distance = float(input("Distance driven: "))
+gasoline = float(input("Gasoline used: "))
 # Print the amounts
 if sys == 'USC':
-    print(distance + "miles")
+    print(format(distance, ',.3f'), \
+          ' miles', sep='')
+    print(format(gasoline, ',.3f'), \
+          ' gallons', sep='')
 elif sys == 'Metric':
-    print(distance + "km")
+    print(format(distance, ',.3f'), \
+          ' km', sep='')
+    print(format(gasoline, ',.3f'), \
+          ' liters', sep='')
 # Convert the quantities
 if sys == 'USC':
     newdis = distance * 1.60934
     newgas = gasoline * 3.78541
-    print(newdis + 'km')
-    print(newgas + 'liters')
 elif sys == 'Metric':
     newdis = distance / 0.621371
     newgas = gasoline / 0.264172
-    print(newdis + 'miles')
-    print(newgas + 'gallons')
 # Compute the fuel consumption
+c_mpg = distance / gasoline
+cm = (distance * 100) / gasoline
+# Consumption rating
+cm1 = 20
+cm2 = 15
+cm3 = 10
+cm4 = 8
+if cm > cm1:
+    rating = 'Extremely Poor'
+elif cm >= cm2:
+    rating = 'Poor'
+elif cm >= cm3:
+    rating = 'Average'
+elif cm >= cm4:
+    rating = 'Good'
+elif cm <= cm4:
+    rating = 'Excellent'
+
+print(format(newdis, ',.3f'), \
+      ' km', sep='')
+print(format(newgas, ',.3f'), \
+      ' liters', sep='')
+print(format(newdis, ',.3f'), \
+      ' miles', sep='')
+print(format(newgas, ',.3f'), \
+      ' gallons', sep='')
+print(format(c1, ',.3f'), \
+     ' mpg', sep='')
+print(format(c2, ',.3f'), \
+     ' 1/100km', sep='')
+print('Gas consumption rating: ' + rating, sep='')
