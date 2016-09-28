@@ -49,5 +49,9 @@ elif cm >= cm4:
 elif cm <= cm4:
     rating = 'Excellent'
 print (format(cm, '.3f') + ' 1/100km')
-print('Gas consumption rating: ' + rating)
+print('\t\t\t\t\t\t\tUSC\t\t\t\t\tMetric')
+print('Distance\t\t: ' + '\t\t',format(miles, '6.3f') + ' miles' + '\t\t\t',format(km, '6.3f') + ' km')
+print('Gas\t\t\t\t: ' + '\t\t',format(gallons, '6.3f') + ' gallons' + '\t\t\t',format(liters, '6.3f') + ' liters')
+print('Consumption\t\t: ' + '\t\t',format(mpg, '6.3f') + ' mpg' + '\t\t\t\t',format(cm, '6.3f') + ' 1/100km')
+print('Gas consumption rating: ' + rating, sep='')
 
