@@ -1,7 +1,7 @@
 Which system do you want to use, USC or Metric? USC
 Number of miles driven: 20
 Gallons of gasoline used: 6
-							USC					Metric
+					USC			Metric
 Distance:            20.000 miles           32.187 km
 Gas:             6.000 gallons           22.712 liters
 Consumption:             3.333 mpg           70.565 1/100km
