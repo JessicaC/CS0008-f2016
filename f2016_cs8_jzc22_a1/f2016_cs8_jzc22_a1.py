@@ -22,6 +22,7 @@ elif sys == 'Metric':
     liters = float(input("Liters of gasoline used: "))
     miles = km / 0.621371
     gallons = liters / 0.264172
+# Fuel consumption
 mpg = miles / gallons
 # Consumption rating
 cm = 100 * liters / km
@@ -39,9 +40,10 @@ elif cm >= cm4:
     rating = 'Good'
 elif cm <= cm4:
     rating = 'Excellent'
+# Output
 print('\t\t\t\t\t\t\tUSC\t\t\t\t\tMetric')
-print('Distance\t\t: ' + '\t\t',format(miles, '6.3f') + ' miles' + '\t\t\t',format(km, '6.3f') + ' km')
-print('Gas\t\t\t\t: ' + '\t\t',format(gallons, '6.3f') + ' gallons' + '\t\t\t',format(liters, '6.3f') + ' liters')
-print('Consumption\t\t: ' + '\t\t',format(mpg, '6.3f') + ' mpg' + '\t\t\t\t',format(cm, '6.3f') + ' 1/100km')
-print('Gas consumption rating: ' + rating, sep='')
+print('Distance: ' + format(miles, '17.3f') + ' miles' + format(km, '17.3f') + ' km')
+print('Gas: ' + format(gallons, '17.3f') + ' gallons' + format(liters, '17.3f') + ' liters')
+print('Consumption: ' + format(mpg, '17.3f') + ' mpg' + format(cm, '17.3f') + ' 1/100km')
+print('Gas consumption rating: ' + rating)
 
