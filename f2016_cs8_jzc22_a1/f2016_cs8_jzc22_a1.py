@@ -41,9 +41,9 @@ elif cm >= cm4:
 elif cm <= cm4:
     rating = 'Excellent'
 # Output
-print('\t\t\t\tUSC\t\t\t\tMetric')
-print('Distance: ' + format(miles, '17.3f') + ' miles' + format(km, '17.3f') + ' km')
-print('Gas: ' + format(gallons, '17.3f') + ' gallons' + format(liters, '17.3f') + ' liters')
-print('Consumption: ' + format(mpg, '17.3f') + ' mpg' + format(cm, '17.3f') + ' 1/100km')
+print('\t\t\t\t\tUSC\t\t\t\t\tMetric')
+print('Distance\t: ' + format(miles, '8.3f') + ' miles\t\t' + format(km, '8.3f') + ' km')
+print('Gas\t\t\t: ' + format(gallons, '8.3f') + ' gallons\t\t' + format(liters, '8.3f') + ' liters')
+print('Consumption\t: ' + format(mpg, '8.3f') + ' mpg\t\t\t' + format(cm, '8.3f') + ' 1/100km')
 print('Gas consumption rating: ' + rating)
 
