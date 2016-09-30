@@ -22,9 +22,9 @@ elif sys == 'Metric':
     liters = float(input("Liters of gasoline used: "))
     miles = km / 1.60934
     gallons = liters / 3.78541
-# Fuel consumption
+# Fuel consumption for miles per gallon
 mpg = miles / gallons
-# Consumption rating
+# Consumption rating - range given, with corresponding category
 cm = 100 * liters / km
 cm1 = 20
 cm2 = 15
