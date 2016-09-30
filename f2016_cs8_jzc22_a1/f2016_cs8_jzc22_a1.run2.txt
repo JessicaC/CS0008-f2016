@@ -1,6 +1,6 @@
-Which system do you want to use, USC or Metric? USC
-Number of miles driven: 10
-Gallons of gasoline used: 3
+Which system do you want to use, USC or Metric? Metric
+Number of km driven: 16.093
+Liters of gasoline used: 11.356
 					USC					Metric
 Distance	:   10.000 miles		  16.093 km
 Gas			:    3.000 gallons		  11.356 liters

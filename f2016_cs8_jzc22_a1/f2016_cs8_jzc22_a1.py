@@ -20,8 +20,8 @@ if sys == 'USC':
 elif sys == 'Metric':
     km = float(input("Number of km driven: "))
     liters = float(input("Liters of gasoline used: "))
-    miles = km / 0.621371
-    gallons = liters / 0.264172
+    miles = km / 1.60934
+    gallons = liters / 3.78541
 # Fuel consumption
 mpg = miles / gallons
 # Consumption rating
