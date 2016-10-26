@@ -9,6 +9,7 @@
 # Description:
 # Assignment 2
 #
+#
 # Ask the user to enter the name of the text file. Loop indefinitely until the user enters 'quit', an empty string, or
 # a 'q'
 while file_name != 'quit' & '' & 'q':
@@ -17,8 +18,10 @@ def processFile(fh):
     data_1 = open('f2016_cs8_a2.data1.csv', 'r')
     data_2 = open('f2016_cs8_a2.data2.csv', 'r')
 
-    count1 = len(data_1.readline())
-    count2 = len(data_2.readline())
+    numlines1 = 0
+    numlines2 = 0
+    for line in open('data_1.txt'): numlines1 += 1
+    for line in open('data_2.txt'): numlines2 += 1
 
     name1 = data_1.readline()
     name2 = data_2.readline()
@@ -35,7 +38,10 @@ def processFile(fh):
 
         name2 = name2.rstrip('\n')
         distance2 = distance2.rstript('\n')
-
+    result1 = 0
+    result2 = 0
+    for line in open('data_1.txt'): result1 += int(line.strip())
+    for line in open('data_2.txt'): result2 += int(line.strip())
 
     data_1.close()
     data_2.close()
