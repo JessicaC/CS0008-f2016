@@ -14,14 +14,18 @@
 # a 'q'
 while file_name != 'quit' & '' & 'q':
     file_name = input("Enter the name of the text file: ")
-def processFile(fh):
+def processFile(lines1, lines2, result1, result2):
     data_1 = open('data_1.txt', 'r')
     data_2 = open('data_2.txt', 'r')
 
-    numlines1 = 0
-    numlines2 = 0
-    for line in open('data_1.txt'): numlines1 += 1
-    for line in open('data_2.txt'): numlines2 += 1
+    lines1 = 0
+    lines2 = 0
+    if file_name == 'data_1.txt':
+        for line1 in open('data_1.txt'):
+            lines1 += 1
+    elif file_name == 'data_2.txt':
+        for line2 in open('data_2.txt'):
+            lines2 += 1
 
     name1 = data_1.readline()
     name2 = data_2.readline()
@@ -37,7 +41,7 @@ def processFile(fh):
         distance2 = data_2.readline()
 
         name2 = name2.rstrip('\n')
-        distance2 = distance2.rstript('\n')
+        distance2 = distance2.rstrip('\n')
     result1 = 0
     result2 = 0
     for line in open('data_1.txt'): result1 += int(line.strip())
@@ -47,17 +51,17 @@ def processFile(fh):
     data_2.close()
 
     print("File to be read: data1.csv")
-    print("Partial Total # of lines: ", numlines1)
+    print("Partial Total # of lines: ", lines1)
     print("Partial distance run: ", result1)
 
     print("File to be read: data2.csv")
-    print("Partial Total # of lines: ", numlines2)
+    print("Partial Total # of lines: ", lines2)
     print("Partial distance run: ", result2)
 
     print("File to be read: quit")
 
     print("Totals")
-    print("Total # of lines: ", numlines1 + numlines2)
+    print("Total # of lines: ", lines1 + lines2)
     print("Total distance run: ", result1 + result2)
 
 
