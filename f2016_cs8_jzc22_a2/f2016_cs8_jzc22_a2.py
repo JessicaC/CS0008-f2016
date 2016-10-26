@@ -15,8 +15,8 @@
 while file_name != 'quit' & '' & 'q':
     file_name = input("Enter the name of the text file: ")
 def processFile(fh):
-    data_1 = open('f2016_cs8_a2.data1.csv', 'r')
-    data_2 = open('f2016_cs8_a2.data2.csv', 'r')
+    data_1 = open('data_1.txt', 'r')
+    data_2 = open('data_2.txt', 'r')
 
     numlines1 = 0
     numlines2 = 0
@@ -46,19 +46,19 @@ def processFile(fh):
     data_1.close()
     data_2.close()
 
+    print("File to be read: data1.csv")
+    print("Partial Total # of lines: ", numlines1)
+    print("Partial distance run: ", result1)
+
+    print("File to be read: data2.csv")
+    print("Partial Total # of lines: ", numlines2)
+    print("Partial distance run: ", result2)
+
+    print("File to be read: quit")
+
+    print("Totals")
+    print("Total # of lines: ", numlines1 + numlines2)
+    print("Total distance run: ", result1 + result2)
+
 
 processFile()
-
-print("File to be read: data1.csv")
-print("Partial Total # of lines: ")
-print("Partial distance run: ")
-
-print("File to be read: data2.csv")
-print("Partial Total # of lines: ")
-print("Partial distance run: ")
-
-print("File to be read: quit")
-
-print("Totals")
-print("Total # of lines: ")
-print("Total distance run: ")
