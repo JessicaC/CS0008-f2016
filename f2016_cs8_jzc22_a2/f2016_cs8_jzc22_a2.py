@@ -9,12 +9,12 @@
 # Description:
 # Assignment 2
 #
-#
-# Ask the user to enter the name of the text file. Loop indefinitely until the user enters 'quit', an empty string, or
-# a 'q'
-while file_name != 'quit' & '' & 'q':
-    file_name = input("Enter the name of the text file: ")
 def processFile(lines1, lines2, result1, result2):
+    # Ask the user to enter the name of the text file. Loop indefinitely until the user enters 'quit', an empty string,
+    # or a 'q'
+    while file_name != 'quit' or '' or 'q':
+        file_name = input("Enter the name of the text file: ")
+
     data_1 = open('data_1.txt', 'r')
     data_2 = open('data_2.txt', 'r')
 
@@ -42,10 +42,15 @@ def processFile(lines1, lines2, result1, result2):
 
         name2 = name2.rstrip('\n')
         distance2 = distance2.rstrip('\n')
+    # Sum up the values
     result1 = 0
     result2 = 0
-    for line in open('data_1.txt'): result1 += int(line.strip())
-    for line in open('data_2.txt'): result2 += int(line.strip())
+    for line in open('data_1.txt'):
+        amount1 = float(line)
+        result1 += amount1
+    for line in open('data_2.txt'):
+        amount2 = float(line)
+        result2 += amount2
 
     data_1.close()
     data_2.close()
@@ -66,3 +71,6 @@ def processFile(lines1, lines2, result1, result2):
 
 
 processFile()
+
+def printkv(key, value, klen=0):
+    print("blah")

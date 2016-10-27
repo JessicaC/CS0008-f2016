@@ -1,2 +1,18 @@
 Ask the user to enter the name of a text file.
 Open
+
+
+
+
+
+
+
+
+    lines1 = 0
+    lines2 = 0
+    if file_name == 'data_1.txt':
+        for line1 in open('data_1.txt'):
+            lines1 += 1
+    elif file_name == 'data_2.txt':
+        for line2 in open('data_2.txt'):
+            lines2 += 1
