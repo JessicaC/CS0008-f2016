@@ -56,6 +56,7 @@ while True:
         break;
     linecount, sumtotal = processfile(fh)
 
+# Print out the output
     printkv('Partial Total # of lines ', linecount,20)
     printkv('Partial distance run', sumtotal)
     whole_lines += linecount
