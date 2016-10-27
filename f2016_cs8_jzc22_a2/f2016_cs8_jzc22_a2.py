@@ -9,6 +9,8 @@
 # Description:
 # Assignment 2
 #
+# This function accepts one argument in input that is the handle to the file object to be read. Returns two values,
+# how many lines the file has and the total sum of the distance of each record
 def processfile(fh):
     # Count the number of lines in the text file
     linecount = 0
@@ -30,7 +32,8 @@ def processfile(fh):
         sumtotal += float(stt[1])
 
     return linecount, sumtotal
-
+# This function accepts 2 mandatory arguments: key and value and an optional third klen (key length). If klen is not
+# passed when called, it defaults to 0
 def printkv (key, value, klen=0):
     kn = len(key)
     space = klen
@@ -38,12 +41,12 @@ def printkv (key, value, klen=0):
     if kn > klen:
         space = kn
 
-    # Is the value int?
+    # Format of value changes according to the type of the value contained in the variable
     if isinstance(value,int):
         print("%20s : %10d" %(key, value))
     else:
         print("%20s : %10.3f"%(key,value))
-
+# Add up the total lines and total distance run for both files to get an overall total
 whole_lines = 0
 whole_total = 0
 
