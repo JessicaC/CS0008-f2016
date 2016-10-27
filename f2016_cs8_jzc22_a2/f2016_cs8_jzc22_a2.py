@@ -9,68 +9,55 @@
 # Description:
 # Assignment 2
 #
-def processFile(lines1, lines2, result1, result2):
-    # Ask the user to enter the name of the text file. Loop indefinitely until the user enters 'quit', an empty string,
-    # or a 'q'
-    while file_name != 'quit' or '' or 'q':
-        file_name = input("Enter the name of the text file: ")
+def processfile(fh):
+    # Count the number of lines in the text file
+    linecount = 0
 
-    data_1 = open('data_1.txt', 'r')
-    data_2 = open('data_2.txt', 'r')
+    # Sum up the values in the text file
+    sumtotal = 0
 
-    lines1 = 0
-    lines2 = 0
-    if file_name == 'data_1.txt':
-        for line1 in open('data_1.txt'):
-            lines1 += 1
-    elif file_name == 'data_2.txt':
-        for line2 in open('data_2.txt'):
-            lines2 += 1
+    # Open the file
+    fid = open(fh, 'r')
 
-    name1 = data_1.readline()
-    name2 = data_2.readline()
+    # Count number of lines in files
+    for line in fid:
+        linecount += 1
+        # Strip the \n
+        line = line.rstrip()
+        # Split the names and distances (string and float)
+        stt = line.split(",")
+        # Sum up the values
+        sumtotal += float(stt[1])
 
-    while name1 != '':
-        distance1 = data_1.readline()
+    return linecount, sumtotal
 
-        # Strip the newlines
-        name1 = name1.rstrip('\n')
-        distance1 = distance1.rstrip('\n')
+def printkv (key, value, klen=0):
+    kn = len(key)
+    space = klen
+    # Get the max space
+    if kn > klen:
+        space = kn
 
-    while name2 != '':
-        distance2 = data_2.readline()
+    # Is the value int?
+    if isinstance(value,int):
+        print("%20s : %10d" %(key, value))
+    else:
+        print("%20s : %10.3f"%(key,value))
 
-        name2 = name2.rstrip('\n')
-        distance2 = distance2.rstrip('\n')
-    # Sum up the values
-    result1 = 0
-    result2 = 0
-    for line in open('data_1.txt'):
-        amount1 = float(line)
-        result1 += amount1
-    for line in open('data_2.txt'):
-        amount2 = float(line)
-        result2 += amount2
+whole_lines = 0
+whole_total = 0
 
-    data_1.close()
-    data_2.close()
+while True:
+    fh = input("File to be read: ")
+    if(fh == "quit") or (fh == "q") or (fh == ""):
+        break;
+    linecount, sumtotal = processfile(fh)
 
-    print("File to be read: data1.csv")
-    print("Partial Total # of lines: ", lines1)
-    print("Partial distance run: ", result1)
+    printkv('Partial Total # of lines ', linecount,20)
+    printkv('Partial distance run', sumtotal)
+    whole_lines += linecount
+    whole_total += sumtotal
 
-    print("File to be read: data2.csv")
-    print("Partial Total # of lines: ", lines2)
-    print("Partial distance run: ", result2)
-
-    print("File to be read: quit")
-
-    print("Totals")
-    print("Total # of lines: ", lines1 + lines2)
-    print("Total distance run: ", result1 + result2)
-
-
-processFile()
-
-def printkv(key, value, klen=0):
-    print("blah")
+print("Totals")
+printkv('Total # of lines ',whole_lines,20)
+printkv('Total distance run',whole_total)
