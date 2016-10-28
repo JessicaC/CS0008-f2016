@@ -1,2 +1,12 @@
-Ask the user to enter the name of a text file.
-Open
+Define the two functions, processfile(fh) and printkv(key, value, klen=0).
+Under processfile(fh), get the number of lines in the file and sum up the total values in the file
+Make sure to strip the comma that is between the name and distance.
+Return the two values - linecount and sumtotal.
+Under printkv(key, value, klen=0), get the length of "key".
+If kn is greater than klen, which is zero, 'space' is assigned the variable kn.
+The format of the value changes according to the type of value contained in the variable.
+If it is an int,
+Otherwise,
+Initialize the values of the overall lines count and values.
+Ask user for the file to be read.
+If user inputs 'quit', 'q', or an empty string, end the loop

@@ -31,6 +31,9 @@ def processfile(fh):
         # Sum up the values
         sumtotal += float(stt[1])
 
+    # Close the file
+    fh.close()
+
     return linecount, sumtotal
 # This function accepts 2 mandatory arguments: key and value and an optional third klen (key length). If klen is not
 # passed when called, it defaults to 0
