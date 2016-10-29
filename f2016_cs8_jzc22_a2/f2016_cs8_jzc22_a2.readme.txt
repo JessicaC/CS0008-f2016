@@ -1,12 +1,22 @@
-Define the two functions, processfile(fh) and printkv(key, value, klen=0).
-Under processfile(fh), get the number of lines in the file and sum up the total values in the file
+Define the two functions, processFile(fh) and printKV(key, value, klen=0).
+Under processFile(fh), get the number of lines in the file and sum up the total values in the file
 Make sure to strip the comma that is between the name and distance.
-Return the two values - linecount and sumtotal.
-Under printkv(key, value, klen=0), get the length of "key".
-If kn is greater than klen, which is zero, 'space' is assigned the variable kn.
-The format of the value changes according to the type of value contained in the variable.
-If it is an int,
-Otherwise,
+Return the two values - linecount and subtotal.
+If value is non-numerical, ignore, but count the line.
+
+Under printKV(key, value, klen=0), get the length of "key".
+Define space to be maximum of klen and length of 'key'.
+Use 'space' to format the key.
+The format of the value changes according to its type.
+
 Initialize the values of the overall lines count and values.
-Ask user for the file to be read.
-If user inputs 'quit', 'q', or an empty string, end the loop
+klen is set to 30.
+
+Loop for user input of file name.
+If user inputs 'quit', 'q', or an empty string, end the loop.
+If file doesn't exist, ignore.
+Open file, call processFile(fh) to get linecount and subtotal and add them to the overall total.
+Close file
+
+Print out the output before program terminates.
+

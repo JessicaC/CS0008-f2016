@@ -20,7 +20,7 @@ def processFile(fh):
     linecount = 0
 
     # Sum up the values in the text file
-    sumtotal = 0
+    subtotal = 0
 
     # Count number of lines in files
     for line in fh:
@@ -30,9 +30,12 @@ def processFile(fh):
         # Split the names and distances (string and float)
         stt = line.split(",")
         # Sum up the values
-        sumtotal += float(stt[1])
+        try:
+            subtotal += float(stt[1])
+        except ValueError:
+            pass
 
-    return linecount, sumtotal
+    return linecount, subtotal
 
 
 # This function accepts 2 mandatory arguments: key and value and an optional third klen (key length). If klen is not
@@ -62,22 +65,23 @@ whole_lines = 0
 whole_total = 0
 klen = 30
 while True:
-    fname = input("File to be read: ")
+    fname = input("Please provide the file name: ")
     if (fname == "quit") or (fname == "q") or (fname == ""):
         break;
 
     # check file existence
     if (os.path.isfile(fname)):
         fh = open(fname, 'r')
-        linecount, sumtotal = processFile(fh)
+        linecount, subtotal = processFile(fh)
         fh.close
 
         # Print out the output
         printKV('File read', fname, klen)
         printKV('Partial Total # of lines', linecount, klen)
-        printKV('Partial distance run', sumtotal, klen)
+        printKV('Partial distance run', subtotal, klen)
+        print('')
         whole_lines += linecount
-        whole_total += sumtotal
+        whole_total += subtotal
 
 print("Totals")
 printKV('Total # of lines ', whole_lines, klen)
