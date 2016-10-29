@@ -1,10 +1,12 @@
 File to be read: file_1.csv
-Partial Total # of lines  :          4
-Partial distance run :    214.750
+File read                      : file_1.csv
+Partial Total # of lines       :          4
+Partial distance run           :    214.750
 File to be read: file_2.csv
-Partial Total # of lines  :          4
-Partial distance run :    250.460
+File read                      : file_2.csv
+Partial Total # of lines       :          4
+Partial distance run           :    250.460
 File to be read: quit
 Totals
-   Total # of lines  :          8
-  Total distance run :    465.210
+Total # of lines               :          8
+Total distance run             :    465.210

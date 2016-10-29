@@ -1,3 +1,4 @@
+import os
 #
 #
 # name          : Jessica Chen
@@ -11,18 +12,18 @@
 #
 # This function accepts one argument in input that is the handle to the file object to be read. Returns two values,
 # how many lines the file has and the total sum of the distance of each record
-def processfile(fh):
+import string
+
+
+def processFile(fh):
     # Count the number of lines in the text file
     linecount = 0
 
     # Sum up the values in the text file
     sumtotal = 0
 
-    # Open the file
-    fid = open(fh, 'r')
-
     # Count number of lines in files
-    for line in fid:
+    for line in fh:
         linecount += 1
         # Strip the \n
         line = line.rstrip()
@@ -31,40 +32,53 @@ def processfile(fh):
         # Sum up the values
         sumtotal += float(stt[1])
 
-    # Close the file
-    fh.close()
-
     return linecount, sumtotal
+
+
 # This function accepts 2 mandatory arguments: key and value and an optional third klen (key length). If klen is not
 # passed when called, it defaults to 0
-def printkv (key, value, klen=0):
+def printKV(key, value, klen=0):
     kn = len(key)
     space = klen
-    # Get the max space
+    # Get the max space for key
     if kn > klen:
         space = kn
 
     # Format of value changes according to the type of the value contained in the variable
-    if isinstance(value,int):
-        print("%20s : %10d" %(key, value))
+    value_str = ''
+    if isinstance(value, int):
+        value_str = format(value, '10d')
+    elif isinstance(value, float):
+        value_str = format(value, '10.3f')
     else:
-        print("%20s : %10.3f"%(key,value))
+        value_str = format(value, '30s')
+
+    format_str = '{0:' + str(space) + 's} : {1:s}'
+    print(format_str.format(key, value_str))
+
+
 # Add up the total lines and total distance run for both files to get an overall total
 whole_lines = 0
 whole_total = 0
-
+klen = 30
 while True:
-    fh = input("File to be read: ")
-    if(fh == "quit") or (fh == "q") or (fh == ""):
+    fname = input("File to be read: ")
+    if (fname == "quit") or (fname == "q") or (fname == ""):
         break;
-    linecount, sumtotal = processfile(fh)
 
-# Print out the output
-    printkv('Partial Total # of lines ', linecount,20)
-    printkv('Partial distance run', sumtotal)
-    whole_lines += linecount
-    whole_total += sumtotal
+    # check file existence
+    if (os.path.isfile(fname)):
+        fh = open(fname, 'r')
+        linecount, sumtotal = processFile(fh)
+        fh.close
+
+        # Print out the output
+        printKV('File read', fname, klen)
+        printKV('Partial Total # of lines', linecount, klen)
+        printKV('Partial distance run', sumtotal, klen)
+        whole_lines += linecount
+        whole_total += sumtotal
 
 print("Totals")
-printkv('Total # of lines ',whole_lines,20)
-printkv('Total distance run',whole_total)
+printKV('Total # of lines ', whole_lines, klen)
+printKV('Total distance run', whole_total, klen)
