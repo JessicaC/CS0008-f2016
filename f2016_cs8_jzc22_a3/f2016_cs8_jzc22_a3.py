@@ -8,7 +8,7 @@
 #
 # Description:
 # Assignment 3
-#
+# A customer needs to process a number of text files that countain names and distance run by study participants.
 #
 # Open and read each data files
 data1 = open('f2016_cs8_a3.data.1.csv', 'r')
