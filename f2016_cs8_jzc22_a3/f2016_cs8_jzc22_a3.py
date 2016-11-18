@@ -1,16 +1,21 @@
+import os
 #
 #
 # name          : Jessica Chen
 # email         : jzc22@pitt.edu
-# date          : 11/15/2016
+# date          : 10/25/2016
 # class         : CS0008-f2016
 # instructor    : Max Novelli
 #
 # Description:
 # Assignment 3
-# A customer needs to process a number of text files that contain names and distance run by study participants.
 #
-# Open and read each data files
+# This function reads the master input file which contains list of data files.
+# It processes each data file to extract runners and his/her running distance.
+# The extracted data are stored in lists and dictionaries which are processed
+# to produce the required results.
+import string
+
 with open('data1.txt', 'r') as in_file:
     data1 = in_file.read().split('\n')
 with open('data2.txt', 'r') as in_file:
