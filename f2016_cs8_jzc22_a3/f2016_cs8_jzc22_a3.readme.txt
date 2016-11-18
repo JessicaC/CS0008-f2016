@@ -10,6 +10,7 @@ For each line in a file, strip \n to get data file name and add to data_file_lis
 
 Define function processDataFile(fh).
 For each line, strip \n and the comma and add to data_list.
+Update runner distance dictionary and the runner appearance dictionary.
 
 Under printKV(key, value, klen=0), get the length of "key".
 Define space to be maximum of klen and length of 'key'.
