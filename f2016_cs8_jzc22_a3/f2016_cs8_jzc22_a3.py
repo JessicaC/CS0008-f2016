@@ -16,17 +16,18 @@ import os
 # to produce the required results.
 import string
 
-with open('data1.txt', 'r') as in_file:
-    data1 = in_file.read().split('\n')
-with open('data2.txt', 'r') as in_file:
-    data2 = in_file.read().split('\n')
-with open('data3.txt', 'r') as in_file:
-    data3 = in_file.read().split('\n')
-
-# Total number of lines read
-linecount1 = 0
-linecount2 = 0
-linecount3 = 0
+# The master input file
+master_input_list_file = 'f2016_cs8_a3.data.txt'
+# The output file that contains runners, records in data files and the total distance run
+output_file = 'f2016_cs8_jzc22_a3.data.output.csv'
+# List to store all data files (read from master input list)
+data_file_list = []
+# List to store all data read from all data files. Each element is pair (name, distance).
+data_list = []
+# Dictionary to store all runners and distances. The key is runner name, value is his/her total distance
+runner_distance_dict = {}
+# Dictionary to store all runners and record count
+runner_records_dict = {}
 
 for line in data1:
     linecount1 += 1
