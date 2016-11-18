@@ -1,0 +1,29 @@
+Define the master input file - f2016_cs8_a3.data.txt.
+Define the output file - f2016_cs8_jzc22_a3.data.output.csv
+Create list to store data files read from master input file.
+Create list to store data read from all data files.
+Create dictionary to store runners and distances.
+Create dictionary to store runners and record count.
+
+Define function processMasterFile(fh).
+For each line in a file, strip \n to get data file name and add to data_file_list.
+
+Define function processDataFile(fh).
+For each line, strip \n and the comma and add to data_list.
+
+Under printKV(key, value, klen=0), get the length of "key".
+Define space to be maximum of klen and length of 'key'.
+Use 'space' to format the key.
+The format of the value changes according to its type.
+
+Define main function
+Process files - open, read, close
+Get number of files, total number of lines, total number of runners, total distance run by all runners.
+Get max distance and runner with max distance.
+Get min distance and runner and min distance.
+Get number of runners with multiple records.
+
+Write to output file
+Print out the output before program terminates.
+Call the main function
+

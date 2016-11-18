@@ -3,7 +3,7 @@ import os
 #
 # name          : Jessica Chen
 # email         : jzc22@pitt.edu
-# date          : 10/25/2016
+# date          : 11/15/2016
 # class         : CS0008-f2016
 # instructor    : Max Novelli
 #
@@ -42,7 +42,7 @@ def processMasterFile(fh):
             data_file_list.append(data_file)
 
             # Process the data file
-            if (os.path.isfile(data_file)):
+            if os.path.isfile(data_file):
                 data_fh = open(data_file, 'r')
                 processDataFile(data_fh)
                 data_fh.close
@@ -67,13 +67,13 @@ def processDataFile(fh):
             data_list.append((runner, distance))
 
             # Update the runner distance dictionary
-            if (runner in runner_distance_dict):
+            if runner in runner_distance_dict:
                 runner_distance_dict[runner] = distance + runner_distance_dict[runner]
             else:
                 runner_distance_dict[runner] = distance
 
             # Update the runner appearance dictionary
-            if (runner in runner_records_dict):
+            if runner in runner_records_dict:
                 runner_records_dict[runner] = 1 + runner_records_dict[runner]
             else:
                 runner_records_dict[runner] = 1
@@ -106,7 +106,7 @@ def main():
     # Process files
     ##################################
 
-    if (os.path.isfile(master_input_list_file)):
+    if os.path.isfile(master_input_list_file):
         fh = open(master_input_list_file, 'r')
         processMasterFile(fh)
         fh.close
@@ -137,10 +137,10 @@ def main():
     for runner, distance in runner_distance_dict.items():
         total_distance += distance
         total_number_of_runner += 1
-        if (distance > max_distance_run):
+        if distance > max_distance_run:
             max_distance_run = distance
             max_distance_runner = runner
-        if (distance < min_distance_run):
+        if distance < min_distance_run:
             min_distance_run = distance
             min_distance_runner = runner
 
