@@ -11,9 +11,12 @@
 # A customer needs to process a number of text files that contain names and distance run by study participants.
 #
 # Open and read each data files
-data1 = open('f2016_cs8_a3.data.1.csv', 'r')
-data2 = open('f2016_cs8_a3.data.2.csv', 'r')
-data3 = open('f2016_cs8_a3.data.3.csv', 'r')
+with open('data1.txt', 'r') as in_file:
+    data1 = in_file.read().split('\n')
+with open('data2.txt', 'r') as in_file:
+    data2 = in_file.read().split('\n')
+with open('data3.txt', 'r') as in_file:
+    data3 = in_file.read().split('\n')
 
 # Total number of lines read
 linecount1 = 0
