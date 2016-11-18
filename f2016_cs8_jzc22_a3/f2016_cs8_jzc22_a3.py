@@ -14,6 +14,7 @@ import os
 # It processes each data file to extract runners and his/her running distance.
 # The extracted data are stored in lists and dictionaries which are processed
 # to produce the required results.
+
 import string
 
 # The master input file
@@ -79,7 +80,6 @@ def processDataFile(fh):
         except ValueError:
             pass
 
-
 # This function accepts 2 mandatory arguments: key and value and an optional third klen (key length). If klen is not
 # passed when called, it defaults to 0
 def printKV(key, value, klen=0):
@@ -110,7 +110,6 @@ def main():
         fh = open(master_input_list_file, 'r')
         processMasterFile(fh)
         fh.close
-
 
     ##################################
     # Process data
