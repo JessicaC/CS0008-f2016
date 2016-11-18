@@ -29,28 +29,55 @@ runner_distance_dict = {}
 # Dictionary to store all runners and record count
 runner_records_dict = {}
 
-for line in data1:
-    linecount1 += 1
-    # Strip the \n
-    line = line.rstrip()
-    # Split the names and distances (string and float)
-    stt = line.split(",")
+# This function accepts one argument: the master input file handle.
+# It reads all data files and process each data file.
+def processMasterFile(fh):
+    for line in fh:
+        try:
+            # Strip the \n to get data file name
+            data_file = line.rstrip()
 
-for line in data2:
-    linecount2 += 1
-    # Strip the \n
-    line = line.rstrip()
-    # Split the names and distances (string and float)
-    stt = line.split(",")
+            # Add to data_file_list
+            data_file_list.append(data_file)
 
-for line in data3:
-    linecount3 += 1
-    # Strip the \n
-    line = line.rstrip()
-    # Split the names and distances (string and float)
-    stt = line.split(",")
+            # Process the data file
+            if (os.path.isfile(data_file)):
+                data_fh = open(data_file, 'r')
+                processDataFile(data_fh)
+                data_fh.close
+        except ValueError:
+            pass
 
-totallines = linecount1 + linecount2 + linecount3
+# This function accepts one argument: the data file handle.
+# It reads data line by line to extract runner and his/her distance.
+# Extracted data are stored into data_list and runner_distance_dict and runner_records_dict.
+def processDataFile(fh):
+    for line in fh:
+        try:
+            # Strip the \n
+            line = line.rstrip()
+            # Split the names and distances (string and float)
+            stt = line.split(",")
+
+            runner = stt[0].strip()  # strip to trim leading and trailing space
+            distance = float(stt[1])
+
+            # Append to data_list
+            data_list.append((runner, distance))
+
+            # Update the runner distance dictionary
+            if (runner in runner_distance_dict):
+                runner_distance_dict[runner] = distance + runner_distance_dict[runner]
+            else:
+                runner_distance_dict[runner] = distance
+
+            # Update the runner appearance dictionary
+            if (runner in runner_records_dict):
+                runner_records_dict[runner] = 1 + runner_records_dict[runner]
+            else:
+                runner_records_dict[runner] = 1
+        except ValueError:
+            pass
 
 
 # Total Distance run
