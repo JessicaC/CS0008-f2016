@@ -44,7 +44,7 @@ for line in data3:
     # Split the names and distances (string and float)
     stt = line.split(",")
 
-totallines =  linecount1 + linecount2 + linecount3
+totallines = linecount1 + linecount2 + linecount3
 
 
 # Total Distance run
