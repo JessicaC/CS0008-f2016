@@ -80,38 +80,36 @@ def processDataFile(fh):
             pass
 
 
-# Total Distance run
-subtotal1 = 0
-subtotal2 = 0
-subtotal3 = 0
-try:
-    subtotal1 += float(stt[1])
-except ValueError:
-    pass
+# This function accepts 2 mandatory arguments: key and value and an optional third klen (key length). If klen is not
+# passed when called, it defaults to 0
+def printKV(key, value, klen=0):
+    kn = len(key)
+    space = klen
+    # Get the max space for key
+    if kn > klen:
+        space = kn
 
-try:
-    subtotal2 += float(stt[1])
-except ValueError:
-    pass
+    # Format of value changes according to the type of the value contained in the variable
+    value_str = ''
+    if isinstance(value, int):
+        value_str = format(value, '10d')
+    elif isinstance(value, float):
+        value_str = format(value, '10.3f')
+    else:
+        value_str = format(value, '30s')
 
-try:
-    subtotal3 += float(stt[1])
-except ValueError:
-    pass
+    format_str = '{0:' + str(space) + 's} : {1:s}'
+    print(format_str.format(key, value_str))
 
-totaldis = subtotal1 + subtotal2 + subtotal3
+def main():
+    ##################################
+    # Process files
+    ##################################
 
-# Total distance run for each individual participant
-
-# Close the files
-data1.close()
-data2.close()
-data3.close()
-
-# Create a list of the data files
-flist = [data1, data2, data3]
-# Get number of files
-nfiles = len(flist)
+    if (os.path.isfile(master_input_list_file)):
+        fh = open(master_input_list_file, 'r')
+        processMasterFile(fh)
+        fh.close
 
 
 print("Number of Input files read: " + nfiles)
