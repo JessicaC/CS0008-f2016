@@ -112,16 +112,78 @@ def main():
         fh.close
 
 
-print("Number of Input files read: " + nfiles)
-print("Total number of lines read: " + totallines)
-print("")
-print("total distance run: " + totaldis)
-print("")
-print("max distance run: " + max(flist))
-print("by participant: ")
-print("min distance run: " + min(flist))
-print("by participant: ")
-print("")
-print("Total number of participants: ")
-print("Number of participants")
-print("with multiple records: ")
+    ##################################
+    # Process data
+    ##################################
+
+    # Total number of data files
+    number_of_files = len(data_file_list)
+    # Total number of lines
+    total_number_of_lines = len(data_list)
+    # Total number of runners
+    total_number_of_runner = 0
+    # Total distance run by all runners
+    total_distance = 0.0
+    # Max distance run by a runner
+    max_distance_run = 0.0
+    # The runner with max distance
+    max_distance_runner = ''
+    # Min distance run by a runner
+    min_distance_run = 9999999.0
+    # The runner with min distance
+    min_distance_runner = ''
+    # The number of runners with multiple records
+    number_of_runner_with_multiple_records = 0
+
+    for runner, distance in runner_distance_dict.items():
+        total_distance += distance
+        total_number_of_runner += 1
+        if (distance > max_distance_run):
+            max_distance_run = distance
+            max_distance_runner = runner
+        if (distance < min_distance_run):
+            min_distance_run = distance
+            min_distance_runner = runner
+
+    output_fh = open(output_file, 'w')
+    for runner, records in runner_records_dict.items():
+        distance = runner_distance_dict[runner]
+        #output = '{0:s},{1:d},{2,.2f}'.format(runner, records, distance)
+        output_fh.write('%s,%d,%.2f\n\r' % (runner, records, distance))
+        if records > 1:
+            number_of_runner_with_multiple_records += 1
+    output_fh.close()
+
+    ##################################
+    # Print results
+    ##################################
+
+    klen = 30
+    # Print out the number of input files
+    printKV('Number of Input files read', number_of_files, klen)
+
+    # Print out total number of lines read
+    printKV('Total number of lines read', total_number_of_lines, klen)
+    print('')
+
+    # Print out total distance run
+    printKV('total distance run', total_distance, klen)
+    print('')
+
+    printKV('max distance run', max_distance_run, klen)
+    printKV('by participant', max_distance_runner, klen)
+    print('')
+
+    printKV('min distance run', min_distance_run, klen)
+    printKV('by participant', min_distance_runner, klen)
+    print('')
+
+    printKV('Total number of participants', total_number_of_runner, klen)
+    print('')
+
+    print('Total number of participants ')
+    printKV('with multiple records', number_of_runner_with_multiple_records, klen)
+    print('')
+
+# use the main() function
+main()
