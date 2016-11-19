@@ -147,7 +147,7 @@ def main():
     output_fh = open(output_file, 'w')
     for runner, records in runner_records_dict.items():
         distance = runner_distance_dict[runner]
-        #output = '{0:s},{1:d},{2,.2f}'.format(runner, records, distance)
+        # output = '{0:s},{1:d},{2,.2f}'.format(runner, records, distance)
         output_fh.write('%s,%d,%.2f\n\r' % (runner, records, distance))
         if records > 1:
             number_of_runner_with_multiple_records += 1

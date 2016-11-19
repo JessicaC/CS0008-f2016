@@ -19,12 +19,16 @@ The format of the value changes according to its type.
 
 Define main function
 Process files - open, read, close
-Get number of files, total number of lines, total number of runners, total distance run by all runners.
-Get max distance and runner with max distance.
-Get min distance and runner and min distance.
-Get number of runners with multiple records.
+Get number of files, total number of lines
+Initialize total number of runners, total distance run by all runners, and max and min distance
+Initialize number of runners with multiple records.
+Get total distance, total number of runners
+Determine max and min distance by comparing them to the variable 'distance'
 
-Write to output file
+Open and write to output file
+If number of records is greater than 1, add to number of runners with multiple records.
+Close output file
+
 Print out the output before program terminates.
 Call the main function
 
