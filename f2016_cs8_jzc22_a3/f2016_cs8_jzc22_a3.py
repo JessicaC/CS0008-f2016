@@ -1,4 +1,5 @@
 import os
+import string
 #
 #
 # name          : Jessica Chen
@@ -14,8 +15,6 @@ import os
 # It processes each data file to extract runners and his/her running distance.
 # The extracted data are stored in lists and dictionaries which are processed
 # to produce the required results.
-
-import string
 
 # The master input file
 master_input_list_file = 'f2016_cs8_a3.data.txt'
