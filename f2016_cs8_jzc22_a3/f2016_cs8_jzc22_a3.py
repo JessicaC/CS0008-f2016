@@ -15,8 +15,15 @@ import string
 # It processes each data file to extract runners and his/her running distance.
 # The extracted data are stored in lists and dictionaries which are processed
 # to produce the required results.
+#
+# Notes:
+# MN: you are relying on implicit global variables.
+#     I would like you to not use the Globals and explicitly pass values back and for
+#
+
 
 # The master input file
+# MN: why not asking the user for the master list file name?
 master_input_list_file = 'f2016_cs8_a3.data.txt'
 # The output file that contains runners, records in data files and the total distance run
 output_file = 'f2016_cs8_jzc22_a3.data.output.csv'
@@ -143,6 +150,7 @@ def main():
             min_distance_run = distance
             min_distance_runner = runner
 
+    # MN: why not combining this loop with the previous one
     output_fh = open(output_file, 'w')
     for runner, records in runner_records_dict.items():
         distance = runner_distance_dict[runner]
