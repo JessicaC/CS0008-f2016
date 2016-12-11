@@ -16,6 +16,66 @@ import string
 # The extracted data are stored in lists and dictionaries which are processed
 # to produce the required results.
 
+class participant:
+    name = "unknown"
+    # total distance run by the participant
+    distance = 0
+    # total number of runs by the participant
+    runs = 0
+
+    def __init__(self, name, distance=0):
+        # set name
+        self.name = name
+        # set distance if non zero
+        if distance > 0:
+            # set distance
+            self.distance = distance
+            # set number of runs accordingly
+            self.runs = 1
+            # end if
+
+    # addDistance method
+    def addDistance(self, distance):
+        if distance > 0:
+            self.distance += distance
+            self.runs += 1
+            # end if
+
+    # addDistances method
+    def addDistances(self, distances):
+        # loops over list
+        for distance in distances:
+            if distance > 0:
+                self.distance += distance
+                self.runs += 1
+                # end if
+                # end for
+
+    # return the name of the participant
+    def getName(self):
+        return self.name
+
+    # return the total distance run computed
+    def getDistance(self):
+        return self.distance
+
+    # return the number of runs
+    def getRuns(self):
+        return self.runs
+
+    # stringify the object
+    def __str__(self):
+        return \
+            "Name : " + format(self.name, '>20s') + \
+            ". Distance run : " + format(self.distance, '9.4f') + \
+            ". Runs : " + format(self.runs, '4d')
+
+    # convert to csv
+    def tocsv(self):
+        return ','.join([self.name, str(self.runs), str(self.distance)])
+
+
+
 # The master input file
 master_input_list_file = 'f2016_cs8_fp.data.txt'
 # The output file that contains runners, records in data files and the total distance run
@@ -185,11 +245,3 @@ def main():
 
 # use the main() function
 main()
-
-class Participants:
-    addDistance(d)
-    addDistances(ld)
-    getDistance()
-    getName()
-    __init__(n,d=0)
-    __str__()
