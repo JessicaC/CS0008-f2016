@@ -16,6 +16,19 @@ import string
 # The extracted data are stored in lists and dictionaries which are processed
 # to produce the required results.
 
+# The master input file
+master_input_list_file = 'f2016_cs8_fp.data.txt'
+# The output file that contains runners, records in data files and the total distance run
+output_file = 'f2016_cs8_jzc22_fp.data.output.csv'
+# List to store all data files (read from master input list)
+data_file_list = []
+# List to store all data read from all data files. Each element is pair (name, distance).
+data_list = []
+# Dictionary to store all runners and distances. The key is runner name, value is his/her total distance
+runner_distance_dict = {}
+# Dictionary to store all runners and record count
+runner_records_dict = {}
+
 class participant:
     name = "unknown"
     # total distance run by the participant
@@ -50,20 +63,18 @@ class participant:
                 self.runs += 1
                 # end if
                 # end for
-
-    # return the name of the participant
+    # Get name of participant
     def getName(self):
         return self.name
 
-    # return the total distance run computed
+    # Get total distance run
     def getDistance(self):
         return self.distance
 
-    # return the number of runs
+    # Get number of runs
     def getRuns(self):
         return self.runs
 
-    # stringify the object
     def __str__(self):
         return \
             "Name : " + format(self.name, '>20s') + \
@@ -73,21 +84,6 @@ class participant:
     # convert to csv
     def tocsv(self):
         return ','.join([self.name, str(self.runs), str(self.distance)])
-
-
-
-# The master input file
-master_input_list_file = 'f2016_cs8_fp.data.txt'
-# The output file that contains runners, records in data files and the total distance run
-output_file = 'f2016_cs8_jzc22_fp.data.output.csv'
-# List to store all data files (read from master input list)
-data_file_list = []
-# List to store all data read from all data files. Each element is pair (name, distance).
-data_list = []
-# Dictionary to store all runners and distances. The key is runner name, value is his/her total distance
-runner_distance_dict = {}
-# Dictionary to store all runners and record count
-runner_records_dict = {}
 
 # This function accepts one argument: the master input file handle.
 # It reads all data files and process each data file.
