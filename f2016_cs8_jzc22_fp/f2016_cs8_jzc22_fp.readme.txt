@@ -1,5 +1,16 @@
-Define the master input file - f2016_cs8_a3.data.txt.
-Define the output file - f2016_cs8_jzc22_a3.data.output.csv
+Define a class 'participant'.
+Define initializer method. Set name and initial distance if provided. If initial distance is not specified, it should be
+set to zero.
+Add single distance to the distance accumulator and increments runs by 1. Argument d is a single float.
+Add an array of distances to distance accumulator. Argument 1d is a list of floats
+Get the name of the participant of the current instance
+Get the current value of the distance accumulator.
+Get number of runs
+Return a string with name, total distance run, and how many distances the object added
+Convert to csv
+
+Define the master input file - f2016_cs8_fp.data.txt.
+Define the output file - f2016_cs8_jzc22_fp.data.output.csv
 Create list to store data files read from master input file.
 Create list to store data read from all data files.
 Create dictionary to store runners and distances.
