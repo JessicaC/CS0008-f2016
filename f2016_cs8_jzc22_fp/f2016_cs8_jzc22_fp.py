@@ -50,11 +50,11 @@ class participant:
                 self.distance += distance
                 self.runs += 1
 
-    # Get name of participant
+    # get the name of the participant of the current instance
     def getName(self):
         return self.name
 
-    # Get total distance run
+    # get the current value of the distance accumulator.
     def getDistance(self):
         return self.distance
 
