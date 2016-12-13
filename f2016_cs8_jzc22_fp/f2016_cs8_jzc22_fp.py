@@ -4,7 +4,7 @@ import string
 #
 # name          : Jessica Chen
 # email         : jzc22@pitt.edu
-# date          : 12/5/2016
+# date          : 12/8/2016
 # class         : CS0008-f2016
 # instructor    : Max Novelli
 #
@@ -18,7 +18,8 @@ import string
 
 # Defines a participant.
 class participant:
-
+    # initializer method. set name and initial distance if provided. If initial distance is not specified, it should be
+    # set to zero
     def __init__(self, name, distance=0):
         # set name
         self.name = name
@@ -34,22 +35,20 @@ class participant:
             # set number of runs
             self.runs = 0
 
-    # addDistance method
+    # add single distance to the distance accumulator and increments runs by 1. Argument d is a single float.
     def addDistance(self, distance):
         if distance > 0:
             self.distance += distance
             self.runs += 1
             # end if
 
-    # addDistances method
+    # add an array of distances to distance accumulator. Argument 1d is a list of floats
     def addDistances(self, distances):
         # loops over list
         for distance in distances:
             if distance > 0:
                 self.distance += distance
                 self.runs += 1
-                # end if
-                # end for
 
     # Get name of participant
     def getName(self):
@@ -63,6 +62,7 @@ class participant:
     def getRuns(self):
         return self.runs
 
+    # Return a string with name, total distance run, and how many distances the object added
     def __str__(self):
         return \
             "Name : " + format(self.name, '>20s') + \
