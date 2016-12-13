@@ -11,30 +11,13 @@ import string
 # Description:
 # Final Project
 #
-# This function reads the master input file which contains list of data files.
+# This program reads the master input file which contains list of data files.
 # It processes each data file to extract runners and his/her running distance.
 # The extracted data are stored in lists and dictionaries which are processed
 # to produce the required results.
 
-# The master input file
-master_input_list_file = 'f2016_cs8_fp.data.txt'
-# The output file that contains runners, records in data files and the total distance run
-output_file = 'f2016_cs8_jzc22_fp.data.output.csv'
-# List to store all data files (read from master input list)
-data_file_list = []
-# List to store all data read from all data files. Each element is pair (name, distance).
-data_list = []
-# Dictionary to store all runners and distances. The key is runner name, value is his/her total distance
-runner_distance_dict = {}
-# Dictionary to store all runners and record count
-runner_records_dict = {}
-
+# Defines a participant.
 class participant:
-    name = "unknown"
-    # total distance run by the participant
-    distance = 0
-    # total number of runs by the participant
-    runs = 0
 
     def __init__(self, name, distance=0):
         # set name
@@ -45,7 +28,11 @@ class participant:
             self.distance = distance
             # set number of runs accordingly
             self.runs = 1
-            # end if
+        else:
+            # set distance
+            self.distance = 0
+            # set number of runs
+            self.runs = 0
 
     # addDistance method
     def addDistance(self, distance):
@@ -63,6 +50,7 @@ class participant:
                 self.runs += 1
                 # end if
                 # end for
+
     # Get name of participant
     def getName(self):
         return self.name
@@ -87,7 +75,14 @@ class participant:
 
 # This function accepts one argument: the master input file handle.
 # It reads all data files and process each data file.
-def processMasterFile(fh):
+# Data file processed will be stored in data_file_list.
+# Information read from data files will be stored in participants_dict.
+#
+# Arguments:
+# fh - master file handle
+# data_file_list - list to store data file names.
+# participants_dict - name to participant dictionary.
+def processMasterFile(fh, data_file_list, participants_dict):
     for line in fh:
         try:
             # Strip the \n to get data file name
@@ -99,15 +94,19 @@ def processMasterFile(fh):
             # Process the data file
             if os.path.isfile(data_file):
                 data_fh = open(data_file, 'r')
-                processDataFile(data_fh)
+                processDataFile(data_fh, participants_dict)
                 data_fh.close
         except ValueError:
             pass
 
-# This function accepts one argument: the data file handle.
-# It reads data line by line to extract runner and his/her distance.
-# Extracted data are stored into data_list and runner_distance_dict and runner_records_dict.
-def processDataFile(fh):
+# This function reads data line by line from a file to extract
+# runner name and his/her distance. Extracted data are used to update
+# the participants_dict.
+#
+# Arguments:
+#   fh - the data file handle
+#   participants_dict - name to participant dictionary.
+def processDataFile(fh, participants_dict):
     for line in fh:
         try:
             # Strip the \n
@@ -115,28 +114,25 @@ def processDataFile(fh):
             # Split the names and distances (string and float)
             stt = line.split(",")
 
-            runner = stt[0].strip()  # strip to trim leading and trailing space
+            name = stt[0].strip()  # strip to trim leading and trailing space
             distance = float(stt[1])
 
-            # Append to data_list
-            data_list.append((runner, distance))
-
-            # Update the runner distance dictionary
-            if runner in runner_distance_dict:
-                runner_distance_dict[runner] = distance + runner_distance_dict[runner]
+            # Update the participant dictionary
+            if name in participants_dict:
+                participants_dict[name].addDistance(distance)
             else:
-                runner_distance_dict[runner] = distance
+                participants_dict[name] = participant(name, distance)
 
-            # Update the runner appearance dictionary
-            if runner in runner_records_dict:
-                runner_records_dict[runner] = 1 + runner_records_dict[runner]
-            else:
-                runner_records_dict[runner] = 1
         except ValueError:
             pass
 
 # This function accepts 2 mandatory arguments: key and value and an optional third klen (key length). If klen is not
-# passed when called, it defaults to 0
+# passed when called, it defaults to 0. It prints the key and value with desired format.
+#
+# Arguments:
+# key - key string.
+# value - value object, this can be int, float, string.
+# klen - optional key length, default is 0.
 def printKV(key, value, klen=0):
     kn = len(key)
     space = klen
@@ -157,13 +153,22 @@ def printKV(key, value, klen=0):
     print(format_str.format(key, value_str))
 
 def main():
+    # The master input file
+    master_input_list_file = 'f2016_cs8_fp.data.txt'
+    # The output file that contains runners, records in data files and the total distance run
+    output_file = 'f2016_cs8_jzc22_fp.data.output.csv'
+    # List to store all data files (read from master input list)
+    data_file_list = []
+    # Map from name to participant object
+    participants_dict = {}
+
     ##################################
     # Process files
     ##################################
 
     if os.path.isfile(master_input_list_file):
         fh = open(master_input_list_file, 'r')
-        processMasterFile(fh)
+        processMasterFile(fh, data_file_list, participants_dict)
         fh.close
 
     ##################################
@@ -173,7 +178,7 @@ def main():
     # Total number of data files
     number_of_files = len(data_file_list)
     # Total number of lines
-    total_number_of_lines = len(data_list)
+    total_number_of_lines = 0
     # Total number of runners
     total_number_of_runner = 0
     # Total distance run by all runners
@@ -189,8 +194,13 @@ def main():
     # The number of runners with multiple records
     number_of_runner_with_multiple_records = 0
 
-    for runner, distance in runner_distance_dict.items():
+    output_fh = open(output_file, 'w')
+
+    for runner, participant in participants_dict.items():
+        distance = participant.getDistance()
+        runs = participant.getRuns()
         total_distance += distance
+        total_number_of_lines += runs
         total_number_of_runner += 1
         if distance > max_distance_run:
             max_distance_run = distance
@@ -198,14 +208,11 @@ def main():
         if distance < min_distance_run:
             min_distance_run = distance
             min_distance_runner = runner
-
-    output_fh = open(output_file, 'w')
-    for runner, records in runner_records_dict.items():
-        distance = runner_distance_dict[runner]
-        # output = '{0:s},{1:d},{2,.2f}'.format(runner, records, distance)
-        output_fh.write('%s,%d,%.2f\n\r' % (runner, records, distance))
-        if records > 1:
+        if runs > 1:
             number_of_runner_with_multiple_records += 1
+
+        output_fh.write(participant.tocsv() + "\n\r")
+
     output_fh.close()
 
     ##################################
