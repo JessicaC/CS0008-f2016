@@ -195,6 +195,11 @@ def main():
     number_of_runner_with_multiple_records = 0
 
     output_fh = open(output_file, 'w')
+    output_fh.write('name,records,distance\n')
+    # loop on all the participants
+    for name, object in participants_dict.items():
+        # write line in file
+        output_fh.write(object.tocsv() + '\n')
 
     for runner, participant in participants_dict.items():
         distance = participant.getDistance()
